@@ -137,7 +137,7 @@ function verify() {
       warning.querySelector("p").textContent = "Redirecting...";
     }, 1500);
     setTimeout(() => {
-      window.location.href = "#";
+      window.location.href = "https://for-hagu.vercel.app/";
     }, 1500);
   } else if (allEmpty) {
     reset();
