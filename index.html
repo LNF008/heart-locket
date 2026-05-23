@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Heart Locket</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+
+<body>
+  <div class="scene">
+    <div class="lock" id="lock">
+      <div class="shackle"></div>
+      <div class="heart-body" id="heartBody">
+        <svg viewBox="0 0 190 175" xmlns="http://www.w3.org/2000/svg" id="heartSvg">
+          <path
+            d="M95,160 C95,160 8,103 8,52 C8,22 31,6 58,6 C73,6 86,14 95,24 C104,14 117,6 132,6 C159,6 182,22 182,52 C182,103 95,160 95,160 Z"
+            fill="#f0c040" stroke="#b08010" stroke-width="4" />
+        </svg>
+        <form action="#">
+          <div class="input-field">
+            <input maxlength="1" type="number" class="otp-input" id="otp1">
+            <input maxlength="1" type="number" class="otp-input" id="otp2" disabled>
+            <input maxlength="1" type="number" class="otp-input" id="otp3" disabled>
+            <input maxlength="1" type="number" class="otp-input" id="otp4" disabled>
+            <input maxlength="1" type="number" class="otp-input" id="otp5" disabled>
+            <input maxlength="1" type="number" class="otp-input" id="otp6" disabled>
+          </div>
+        </form>
+        <button onclick="verify()">Verify</button>
+      </div>
+    </div>
+  </div>
+  <div class="warning">
+    <p>Please enter the password!</p>
+  </div>
+  <audio id="Sound" preload="auto">
+    <source src="audio/beep.mp3" type="audio/mpeg">
+    <source src="audio/beep.ogg" type="audio/ogg">
+  </audio>
+  <audio id="Success" preload="auto">
+    <source src="audio/success.mp3" type="audio/mpeg">
+  </audio>
+  <audio id="Wrong" preload="auto">
+    <source src="audio/wrong.mp3" type="audio/mpeg">
+  </audio>
+  <script src="script.js"></script>
+</body>
+
+</html>
