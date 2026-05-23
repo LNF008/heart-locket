@@ -1,8 +1,35 @@
 @import url('https://fonts.googleapis.com/css2?family=Pacifico&family=Paytone+One&display=swap');
+
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+}
+
+:root {
+  /* PC / laptop (> 1024px) */
+  --scene-w: 560px;
+  --scene-h: 520px;
+  --heart-size: 420px;
+  --lock-w: var(--heart-size);
+  --lock-h: calc(var(--heart-size) * 400 / 420);
+  --shackle-w: calc(var(--heart-size) * 120 / 420);
+  --shackle-h: calc(var(--heart-size) * 110 / 420);
+  --shackle-border: calc(var(--heart-size) * 18 / 420);
+  --shackle-outline: calc(var(--heart-size) * 10 / 420);
+  --shackle-radius: calc(var(--heart-size) * 42 / 420);
+  --form-w: calc(var(--heart-size) * 290 / 420);
+  --input-w: calc(var(--heart-size) * 42 / 420);
+  --input-h: calc(var(--heart-size) * 45 / 420);
+  --input-gap: calc(var(--heart-size) * 8 / 420);
+  --input-font: calc(var(--heart-size) * 18 / 420);
+  --btn-font: calc(var(--heart-size) * 19.2 / 420);
+  --btn-mt: calc(var(--heart-size) * 25 / 420);
+  --btn-pad: calc(var(--heart-size) * 9 / 420);
+  --warning-font: 1.1rem;
+  --warning-pad-y: 10px;
+  --warning-pad-x: 20px;
+  --warning-top: 20px;
 }
 
 body {
@@ -10,23 +37,26 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 100vh;
+  min-height: 100vh;
+  min-height: 100dvh;
   overflow: hidden;
+  padding: 12px;
 }
 
 .scene {
   position: relative;
-  width: 560px;
-  height: 520px;
+  width: var(--scene-w);
+  height: var(--scene-h);
   display: flex;
   align-items: center;
   justify-content: center;
+  flex-shrink: 0;
 }
 
 .lock {
   position: relative;
-  width: 420px;
-  height: 400px;
+  width: var(--lock-w);
+  height: var(--lock-h);
   flex-shrink: 0;
 }
 
@@ -35,12 +65,12 @@ body {
   top: -10%;
   left: 50%;
   transform: translateX(-50%);
-  width: 120px;
-  height: 110px;
-  border: 18px solid #f0c040;
+  width: var(--shackle-w);
+  height: var(--shackle-h);
+  border: var(--shackle-border) solid #f0c040;
   border-bottom: none;
-  border-radius: 42px 42px 0 0;
-  outline: 10px solid #b08010;
+  border-radius: var(--shackle-radius) var(--shackle-radius) 0 0;
+  outline: var(--shackle-outline) solid #b08010;
   outline-offset: -2px;
   transform-origin: right center;
   transition: none;
@@ -51,8 +81,8 @@ body {
   bottom: 0;
   left: 50%;
   transform: translateX(-50%);
-  width: 420px;
-  height: 420px;
+  width: var(--heart-size);
+  height: var(--heart-size);
 }
 
 .heart-body svg {
@@ -63,11 +93,11 @@ body {
 
 .input-field input {
   font-family: "Paytone One", sans-serif;
-  height: 45px;
-  width: 42px;
+  height: var(--input-h);
+  width: var(--input-w);
   border-radius: 6px;
   outline: none;
-  font-size: 1.125rem;
+  font-size: var(--input-font);
   text-align: center;
   border: 1px solid #ccc;
   color: #e91e8c;
@@ -95,12 +125,12 @@ body {
 
 button {
   font-family: "Paytone One", sans-serif;
-  margin-top: 25px;
+  margin-top: var(--btn-mt);
   width: 100%;
   color: #fff;
-  font-size: 1.2rem;
+  font-size: var(--btn-font);
   border: none;
-  padding: 9px 0;
+  padding: var(--btn-pad) 0;
   cursor: pointer;
   border-radius: 6px;
   background: #ffb6c1;
@@ -127,7 +157,6 @@ button:hover::after {
 button:hover {
   box-shadow: 0 4px 16px #f8bbd0;
 }
-
 
 button.denied {
   background: #e66465;
@@ -179,20 +208,22 @@ button.success {
   position: fixed;
   top: -60px;
   left: 50%;
-  font-size: 1.1rem;
+  font-size: var(--warning-font);
   transform: translateX(-50%);
   background: #e66465;
   color: #fff;
-  padding: 10px 20px;
+  padding: var(--warning-pad-y) var(--warning-pad-x);
   border-radius: 6px;
   display: none;
   white-space: nowrap;
+  max-width: calc(100vw - 24px);
+  text-align: center;
   transition: top 0.4s ease-in-out;
   z-index: 100;
 }
 
 .warning.visible {
-  top: 20px;
+  top: var(--warning-top);
 }
 
 form {
@@ -200,7 +231,8 @@ form {
   top: 40%;
   left: 50%;
   transform: translate(-50%, -40%);
-  width: 290px;
+  width: var(--form-w);
+  max-width: 72%;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -209,5 +241,55 @@ form {
 form .input-field {
   display: flex;
   flex-direction: row;
-  column-gap: 8px;
+  column-gap: var(--input-gap);
+  justify-content: center;
+  flex-wrap: nowrap;
+  width: 100%;
+  max-width: 100%;
+}
+
+form .input-field input {
+  flex: 1 1 0;
+  min-width: 0;
+  max-width: var(--input-w);
+}
+
+/* Tablet: 768px – 1024px */
+@media (min-width: 768px) and (max-width: 1024px) {
+  :root {
+    --scene-w: 480px;
+    --scene-h: 450px;
+    --heart-size: 360px;
+    --warning-font: 1rem;
+    --warning-pad-x: 18px;
+  }
+}
+
+/* Smartphone: 320px – 767px */
+@media (max-width: 767px) {
+  :root {
+    --scene-w: clamp(280px, 88vw, 400px);
+    --scene-h: clamp(260px, 82vw, 375px);
+    --heart-size: clamp(210px, calc(100vw - 48px), 340px);
+    --form-w: calc(var(--heart-size) * 0.63);
+    --input-w: calc(var(--heart-size) * 0.088);
+    --input-h: calc(var(--heart-size) * 0.1);
+    --input-gap: calc(var(--heart-size) * 0.014);
+    --warning-font: clamp(0.85rem, 3.5vw, 1rem);
+    --warning-pad-y: 8px;
+    --warning-pad-x: 14px;
+    --warning-top: 12px;
+  }
+
+  body {
+    padding: 8px;
+  }
+
+  form {
+    max-width: 68%;
+  }
+
+  .warning {
+    white-space: normal;
+  }
 }
